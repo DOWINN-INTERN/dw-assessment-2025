@@ -87,22 +87,23 @@ buttons.addEventListener('click', function (event) {
   // ! modify below for Advanced Challenge & Nightmare.
   if (target.matches('button')) {
     if (action === 'number') {
-
+      // checks if display is on initial state
       if (display.textContent === '0')
       {
         display.textContent = buttonContent;
       }
       else {
-        if(operatorForAdvanced !== undefined && previousNum === undefined)
+        // checks
+        if (operatorForAdvanced && previousKey !== '.' && (previousNum === undefined || previousNum === "0" ))
         {
           display.textContent = buttonContent;
-          previousNum = display.textContent;
         }
         else
         {
           display.textContent += buttonContent;
-          previousNum = display.textContent;
+
         }
+        previousNum = display.textContent;
       }
       previousKey = buttonContent;
       console.log(firstNum);
@@ -110,16 +111,20 @@ buttons.addEventListener('click', function (event) {
       console.log(previousKey);
     }
     if (action === 'operator') {
-
-      previousKey = buttonContent;
-
-      if (firstNum && previousNum && operatorForAdvanced)
+      if (firstNum === undefined || operatorForAdvanced === undefined)
+      {
+        firstNum = display.textContent;
+      }
+      
+      if (previousNum === display.textContent && operatorForAdvanced)
       {
         display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
+        firstNum = display.textContent;
       }
-      firstNum = Number(display.textContent);
-      operatorForAdvanced = buttonContent;
       previousNum = undefined;
+
+      operatorForAdvanced = buttonContent;
+      previousKey = buttonContent;
 
       console.log(firstNum);
       console.log(previousNum);
@@ -131,12 +136,8 @@ buttons.addEventListener('click', function (event) {
 
       if (operatorForAdvanced === undefined)
       {
-        if (display.textContent.includes(buttonContent))
+        if (!display.textContent.includes(buttonContent))
         {
-
-        }
-        else
-        { 
           display.textContent += buttonContent;
         }
       }
@@ -145,7 +146,6 @@ buttons.addEventListener('click', function (event) {
         if (previousNum === undefined)
         {
           display.textContent = "0.";
-          previousNum = 0;
         }
         else
         {
@@ -187,7 +187,6 @@ buttons.addEventListener('click', function (event) {
       display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
       firstNum = Number(display.textContent);
 
-      previousKey = undefined;
     }
   }
 });
