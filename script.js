@@ -93,7 +93,7 @@ buttons.addEventListener('click', function (event) {
         display.textContent = buttonContent;
       }
       else {
-        // checks
+        // checks if user has selected operator and previous key is not decimal and either previous number is undefined
         if (operatorForAdvanced && previousKey !== '.' && (previousNum === undefined || previousNum === "0" ))
         {
           display.textContent = buttonContent;
@@ -101,17 +101,13 @@ buttons.addEventListener('click', function (event) {
         else
         {
           display.textContent += buttonContent;
-
         }
         previousNum = display.textContent;
       }
       previousKey = buttonContent;
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
     }
     if (action === 'operator') {
-      if (firstNum === undefined || operatorForAdvanced === undefined)
+      if (firstNum === undefined)
       {
         firstNum = display.textContent;
       }
@@ -121,14 +117,11 @@ buttons.addEventListener('click', function (event) {
         display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
         firstNum = display.textContent;
       }
+
       previousNum = undefined;
 
       operatorForAdvanced = buttonContent;
       previousKey = buttonContent;
-
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
     }
     if (action === 'decimal') {
       if (previousKey === buttonContent)
@@ -149,16 +142,16 @@ buttons.addEventListener('click', function (event) {
         }
         else
         {
-          display.textContent += buttonContent;
+          if (!display.textContent.includes(buttonContent))
+          {
+            display.textContent += buttonContent;
+          }
         }
       }
 
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
-
       previousKey = buttonContent;
     }
+    
     if (action === 'clear') {
       firstNum = undefined;
       operatorForAdvanced = undefined;
@@ -166,12 +159,8 @@ buttons.addEventListener('click', function (event) {
       display.textContent = '0';
       previousKey = undefined;
     }
-    if (action === 'calculate') {
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
-      console.log(operatorForAdvanced);
 
+    if (action === 'calculate') {
       if (operatorForAdvanced === undefined)
       {
         return;
@@ -182,8 +171,6 @@ buttons.addEventListener('click', function (event) {
         previousNum = display.textContent;
       }
 
-      firstNum = Number(firstNum);
-      previousNum = Number(previousNum);
       display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
       firstNum = Number(display.textContent);
 

@@ -26,15 +26,20 @@ body {
 }
 
 .calculator {
-  background-color: #4000c7;
+  background-color: gold;
   width: 350px;
   height: 500px;
-  border-radius: 10px;
+  border-radius: 2rem;
   padding: 30px 20px;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
 }
 
 .calculator__display--bare {
-  /* display: none; */
+  display: none;
   background-color: #ffffff;
   text-align: center;
   vertical-align: middle;
@@ -65,12 +70,21 @@ body {
   height: 100px;
   width: 100%;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 2rem;
   text-align: center;
   vertical-align: middle;
-  padding: 25px 15px;
-  overflow: hidden;
+  padding: 15px 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
   overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: end;
+  text-wrap: wrap;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .calculator__buttons {
@@ -85,10 +99,24 @@ body {
 .clear__and__enter {
   height: 50px;
   margin: 10px;
+  border-radius: 10px;
   background-color: #f3f0fc;
+  display: flex;
+  align-items: center;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .clear__and__enter > button {
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+  transition: all ease-in 50ms;
+  -webkit-transition: all ease-in 50ms;
+  -moz-transition: all ease-in 50ms;
+  -ms-transition: all ease-in 50ms;
+  -o-transition: all ease-in 50ms;
+  border: 1px solid gray;
   border-radius: 10px;
   width: 50px;
   height: 40px;
@@ -101,7 +129,15 @@ body {
 .button__row {
   height: 50px;
   margin: 10px;
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-around;
   background-color: #f3f0fc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .button__row > button {
@@ -111,6 +147,23 @@ body {
   cursor: pointer;
   outline: none;
   background-color: #ebebeb;
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+  transition: all ease-in 50ms;
+  -webkit-transition: all ease-in 50ms;
+  -moz-transition: all ease-in 50ms;
+  -ms-transition: all ease-in 50ms;
+  -o-transition: all ease-in 50ms;
+  border: 1px solid gray;
+}
+
+.button__row > button:hover, .clear__and__enter > button:hover
+{
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.button__row > button:active, .clear__and__enter > button:active
+{
+  box-shadow: inset 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .button__row > .operator {
