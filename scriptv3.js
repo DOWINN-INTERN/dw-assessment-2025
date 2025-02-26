@@ -87,76 +87,29 @@ buttons.addEventListener('click', function (event) {
   // ! modify below for Advanced Challenge & Nightmare.
   if (target.matches('button')) {
     if (action === 'number') {
-
-      if (display.textContent === '0')
+      if (display.textContent === "0")
       {
         display.textContent = buttonContent;
       }
-      else {
-        if(operatorForAdvanced !== undefined && previousNum === undefined)
+      else
+      {
+        if (operatorForAdvanced !== undefined && previousNum)
         {
           display.textContent = buttonContent;
-          previousNum = display.textContent;
         }
         else
         {
           display.textContent += buttonContent;
-          previousNum = display.textContent;
         }
       }
       previousKey = buttonContent;
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
     }
     if (action === 'operator') {
-
-      previousKey = buttonContent;
-
-      if (firstNum && previousNum && operatorForAdvanced)
-      {
-        display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
-      }
-      firstNum = Number(display.textContent);
+      firstNum = buttonContent;
       operatorForAdvanced = buttonContent;
-      previousNum = undefined;
-
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
+      previousKey = buttonContent;
     }
     if (action === 'decimal') {
-      if (previousKey === buttonContent)
-        return;
-
-      if (operatorForAdvanced === undefined)
-      {
-        if (display.textContent.includes(buttonContent))
-        {
-
-        }
-        else
-        { 
-          display.textContent += buttonContent;
-        }
-      }
-      else 
-      {
-        if (previousNum === undefined)
-        {
-          display.textContent = "0.";
-          previousNum = 0;
-        }
-        else
-        {
-          display.textContent += buttonContent;
-        }
-      }
-
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
-
       previousKey = buttonContent;
     }
     if (action === 'clear') {
@@ -167,25 +120,12 @@ buttons.addEventListener('click', function (event) {
       previousKey = undefined;
     }
     if (action === 'calculate') {
-      console.log(firstNum);
-      console.log(previousNum);
-      console.log(previousKey);
-      console.log(operatorForAdvanced);
-
       if (operatorForAdvanced === undefined)
-      {
         return;
-      }
 
-      if (previousNum === undefined)
-      {
-        previousNum = display.textContent;
-      }
+      previousNum = Number(display.textContent);
 
-      firstNum = Number(firstNum);
-      previousNum = Number(previousNum);
-      display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
-      firstNum = Number(display.textContent);
+      display.textContent = calculate(Number(firstNum), operator, Number(previousNum));
 
       previousKey = undefined;
     }
