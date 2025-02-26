@@ -87,11 +87,20 @@ buttons.addEventListener('click', function (event) {
   // ! modify below for Advanced Challenge & Nightmare.
   if (target.matches('button')) {
     if (action === 'number') {
-      previousNum = Number(buttonContent);
       previousKey = buttonContent;
       if (operatorForAdvanced == undefined)
       {
         firstNum = Number(buttonContent);
+      }
+      else {
+        if (previousNum === undefined)
+        {
+          previousNum = buttonContent;
+        }
+        else {
+          previousNum += buttonContent;
+        }
+        console.log(previousNum);
       }
 
       if (display.textContent === '0')
@@ -112,6 +121,18 @@ buttons.addEventListener('click', function (event) {
       if (previousKey === buttonContent)
       {
         return;
+      }
+
+      if (operatorForAdvanced != undefined)
+      {
+        if (previousNum === undefined)
+          {
+            previousNum = buttonContent;
+          }
+          else {
+            previousNum += buttonContent;
+          }
+          console.log(previousNum);
       }
       previousKey = buttonContent;
       display.textContent += buttonContent;
@@ -139,6 +160,7 @@ buttons.addEventListener('click', function (event) {
       
       if (previousKey === operatorForAdvanced)
       {
+        previousNum = Number(previousNum);
         previousNum = firstNum;
       }
 
