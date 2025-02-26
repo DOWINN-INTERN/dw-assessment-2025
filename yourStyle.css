@@ -60,7 +60,7 @@ body {
 }
 
 .calculator__display--for-advanced {
-  display: none; /* remove this line of code for advance test*/
+   /* remove this line of code for advance test*/
   background-color: #ffffff;
   height: 100px;
   width: 100%;

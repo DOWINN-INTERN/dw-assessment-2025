@@ -31,12 +31,12 @@ function test(window, expect) {
     bare(window, expect);
   });
   // ! for Advanced Challenge test, Nightmare test release below annotation.
-  // describe('Advanced Challenge test', function () {
-  //   advanced(window, expect);
-  // });
-  // describe('Nightmare test', function () {
-  //   nightmare(window, expect);
-  // });
+  describe('Advanced Challenge test', function () {
+    advanced(window, expect);
+  });
+  describe('Nightmare test', function () {
+    nightmare(window, expect);
+  });
 }
 
 function bare(window, expect) {
