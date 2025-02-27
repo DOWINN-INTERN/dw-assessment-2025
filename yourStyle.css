@@ -34,7 +34,7 @@ body {
 }
 
 .calculator__display--bare {
-  /* display: none; */
+  display: none;
   background-color: #ffffff;
   text-align: center;
   vertical-align: middle;
@@ -60,7 +60,7 @@ body {
 }
 
 .calculator__display--for-advanced {
-  display: none; /* remove this line of code for advance test*/
+  /* display: none; remove this line of code for advance test */
   background-color: #ffffff;
   height: 100px;
   width: 100%;
